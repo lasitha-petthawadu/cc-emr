@@ -21,5 +21,5 @@ if __name__ == "__main__":
                       .reduceByKey(add)
         sqlContext = SQLContext(sc)
         df = sqlContext.createDataFrame(counts.coalesce(1, shuffle = True), ['word', 'count'])
-        df.write.format("com.databricks.spark.csv").option("header", "true").save("s3://cc-iit-emr/output-data")
+        df.write.format("com.databricks.spark.csv").option("header", "true").save("s3://cc-iit-emr/output-data/word_count.csv")
         sc.stop()
